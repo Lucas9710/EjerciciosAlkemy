@@ -1,0 +1,38 @@
+import UIKit
+
+
+typealias tuplaDireccion = (ciudad: String, partido: String, provincia: String, calle: [String:Any]  , pais: String, codigoPostal: String, piso: String?, depto: String?)
+
+let direccion1 : tuplaDireccion = (ciudad : "Caba", partido: "caba", provincia: "caba", calle: ["nombreDeCalle": "Fray C. Rodriguez", "altura": 500, "entreCalle1" : "Aranguren", "entreCalle2": "Avellaneda" ], pais : "Argentina", codigoPostal: "1406", piso: "2", depto: "7")
+
+let direccion2: tuplaDireccion = (ciudad : "Cordoba", partido: "Cordoba", provincia: "Cordoba", calle: ["nombreDeCalle": "Formosa", "altura": 50, "entreCalle1" : "Tacuari", "entreCalle2": "Carranza" ], pais : "Argentina", codigoPostal: "1526", piso: nil, depto: nil)
+
+let direccion3:tuplaDireccion = (ciudad : "Rosario", partido: "Rosario", provincia: "Santa Fe", calle: ["nombreDeCalle": "perez", "altura": 800, "entreCalle1" : "belgrano", "entreCalle2": "terrada" ], pais : "Argentina", codigoPostal: "5016", piso: nil, depto: nil)
+
+let direcciones: [tuplaDireccion] = [direccion1, direccion2, direccion3]
+
+func direccionFormatter(direccion : tuplaDireccion) -> String{
+    
+    let direccionCompleta = "\(direccion)"
+    
+    return direccionCompleta
+}
+
+
+for direccion in direcciones{
+    print(direccionFormatter(direccion: direccion))
+    print("\n")
+}
+
+func pisoDepartamento (direccion: tuplaDireccion) -> String {
+   if let contienePiso = direccion.piso, let contieneDepto = direccion.depto {
+       return "El piso es \(contienePiso) y el depto es \(contieneDepto)"
+   }
+   else {
+       return "Esta direccion no tiene piso y/o depto "
+   }
+}
+
+print(pisoDepartamento(direccion: direccion1))
+print(pisoDepartamento(direccion: direccion2))
+print(pisoDepartamento(direccion: direccion3))
