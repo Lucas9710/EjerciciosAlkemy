@@ -1,6 +1,5 @@
 import UIKit
 
-
 typealias tuplaDireccion = (ciudad: String, partido: String, provincia: String, calle: [String:Any]  , pais: String, codigoPostal: String, piso: String?, depto: String?)
 
 let direccion1 : tuplaDireccion = (ciudad : "Caba", partido: "caba", provincia: "caba", calle: ["nombreDeCalle": "Fray C. Rodriguez", "altura": 500, "entreCalle1" : "Aranguren", "entreCalle2": "Avellaneda" ], pais : "Argentina", codigoPostal: "1406", piso: "2", depto: "7")
@@ -19,20 +18,22 @@ func direccionFormatter(direccion : tuplaDireccion) -> String{
 }
 
 
+func pisoDepartamento (direcciones: [tuplaDireccion])  {
+    
+    for direccion in direcciones{
+        if let contienePiso = direccion.piso, let contieneDepto = direccion.depto {
+            print("El piso es \(contienePiso) y el depto es \(contieneDepto)")
+        }
+        else {
+            print("Esta direccion no tiene piso y/o depto ")
+        }
+
+}
+
+}
 for direccion in direcciones{
     print(direccionFormatter(direccion: direccion))
     print("\n")
 }
 
-func pisoDepartamento (direccion: tuplaDireccion) -> String {
-   if let contienePiso = direccion.piso, let contieneDepto = direccion.depto {
-       return "El piso es \(contienePiso) y el depto es \(contieneDepto)"
-   }
-   else {
-       return "Esta direccion no tiene piso y/o depto "
-   }
-}
-
-print(pisoDepartamento(direccion: direccion1))
-print(pisoDepartamento(direccion: direccion2))
-print(pisoDepartamento(direccion: direccion3))
+pisoDepartamento(direcciones: direcciones)
